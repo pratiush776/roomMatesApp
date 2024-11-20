@@ -6,6 +6,7 @@ const { group } = require('console');
 const app = express();                    
 const users_db = nedb.create('users.jsonl');    
 const groups_db = nedb.create('groups.jsonl');    
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));      
 
@@ -490,5 +491,13 @@ app.patch('/user/admin/updateSchedule',async (req,res)=>{
 // default route
 app.all('*',(req,res)=>{res.status(404).send('Invalid URL.')});
 
+
+//test 
+app.get("/test",(req,res)=>{
+    res.json("server is running...")
+})
+
 // start server
-app.listen(3000,()=>console.log("Server started on http://localhost:3000"));
+app.listen(PORT, ()=> {
+    console.log("Server started running on port"+PORT)
+});
