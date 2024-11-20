@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.19.2",
+    "nedb-promises": "^6.2.3",
+    "node": "^18.20.2"
+  }
+}

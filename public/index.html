@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <title>RMates</title>
+</head>
+<body>
+    <div id="main" class="main">
+        <div id="signin_dashboard" class="lander">
+            <div id="login" class="section">
+                <h1 id="title_login" class="title">Login</h1>
+                <div class="login_form_container container">
+                    <div id="form_login">
+                        <input id="login_email" type="email" placeholder="Email" required></input>
+                        <input id="login_password" type="password" placeholder="Password" required></input>
+                        <button id="sign_in_btn" class="form_btn">Sign In</button>
+                        <!-- <a href="#">Forgot your password?</a> -->
+                    </div>
+                    <h2 id="login_to_register_btn">Create new account</h2>
+                </div>
+            </div>
+            <div id="register" class="section hidden">
+                <h1 id="title_register" class="title">Welcome</h1>
+                <div class="register_form_container container">
+                    <div id="form_register">
+                        <input id="register_name" type="name" placeholder="Name" required></input>
+                        <input id="register_email" type="email" placeholder="Email" required> </input>
+                        <input id="register_password" type="password" placeholder="Password" required></input>
+                        <button id="join_btn" class="form_btn">Join</button>
+                    </div>
+                </div>
+                <button id="register_to_login_btn" class="btn">
+                    <img  class="arrow_img back_arrow_img" src="images/left.png"> 
+                </button>
+            </div> 
+            <div id="signin_error" class="error_container">
+            </div>
+        </div>
+
+        <div id="loggedin_dashboard" class="lander hidden">
+
+            <div id="menu" class="menu">
+                <button id="menu_toggle" class="menu_toggle_btn btn">
+                    <img  class="menu_img" src="images/menu_icon.png">
+                </button>
+                <button id="home_btn" class="home_btn menu_btn btn not_visible">
+                    <img  class="menu_img" style="padding: 0.7em;" src="images/home_icon.png">
+                </button>  
+                <button id="account_btn" class="account_btn menu_btn btn not_visible">
+                    <img  class="menu_img" src="images/profile_icon.png">
+                </button>  
+                <button id="groups_btn" class="groups_btn menu_btn btn not_visible">
+                    <img  class="menu_img" style="padding: 0.75em;"src="images/groups.webp">
+                </button>  
+                <button id="settings_btn" class="settings_btn menu_btn btn not_visible">
+                    <img  class="menu_img" style="opacity: 0.7;" src="images/settings_icon.png">
+                </button>  
+                <button id="logout" class="logout_btn groups_btn menu_btn btn not_visible">
+                    <img  class="menu_img logout_img" src="images/logout_icon.webp">
+                </button> 
+            </div>
+            <div id="home" class=".contents_section">
+                <div id="today" class="today section .content_section">
+                    <h1 class="title">Today</h1>
+                    <div class="today_container container"> </div>
+                </div>
+                <div id="schedule" class="schedule section content_section hidden">
+                    <h1 class="title">Schedule</h1>
+                    <div class="member_buttons" id="memberBtnContainer">
+                        <!-- Buttons will be dynamically created here -->
+                    </div>
+                    <!-- Task and Member Assignment Section -->
+                    <div class="task_container container home_schedule" id="taskContent" >
+                        <!-- Task sections will be dynamically created here -->
+                    </div>
+
+                
+                </div>
+
+                <button id="calendar_btn" class="calendar_btn btn">
+                    <img  class="menu_img" style="transform: translate(0.1em,0);" src="images/right.png">
+                </button>
+
+                <button id="today_btn" class="today_btn btn hidden">
+                    <img  class="menu_img" style="transform: translate(-0.1em,0);" src="images/left.png">
+                </button>
+            </div>
+            <div id="account" class="account section menu_section hidden">
+                <h1 class="title">My account</h1>
+                <h2>User ID : <span id="user_id"></span></h2>
+                <div class="account_container container">
+                    <div id="user_info" class="user_info">
+
+                        <label for="account_name">Name  :</label> 
+                        <input name="account_name" id="account_name" class="account_section_field" required></input>
+                        
+                        <label for="account_email">Email :</label> 
+                        <input name="account_email" id="account_email" class="account_section_field" type="email" required></input>
+                        
+                        <button id="update_info_btn" class="section_btn btn">Update</button>
+                        
+                        <button id="change_password_btn" class="section_btn btn">Change Password</button>
+                        <input type="password" id="old_password" style="grid-column: 1/-1;" placeholder="Old Password" class="account_section_field hidden" required></input>
+                        <input type="password" id="new_password" style="grid-column: 1/-1;" placeholder="New Password" class="account_section_field hidden" required></input>
+                        <button id="confirm_change_password_btn" class="section_btn btn not_visible">Confirm</button>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <div id="groups" class="groups section menu_section hidden">
+                <h1 class="title">Mates</h1>
+                <div id="mates_container" class="mates_container container">
+                </div>
+                <div id="no_group" class="no_group_container container">
+                </div>
+            </div>
+            
+            <div id="settings" class="settings section menu_section hidden">
+                <h1 class="title">Settings</h1>
+                <div class="settings_container container">
+                    <div class="theme-switch-wrapper">
+                        <h2>Dark Mode</h2>
+                        <label class="theme-switch" for="theme-toggle">
+                            <input type="checkbox" id="theme-toggle">
+                            <div class="slider round"></div>
+                        </label>
+                    </div>
+                </div>
+                <button id="delete_account_btn" class="delete_btn section_btn btn">Delete Account</button>
+            </div>
+
+            <div id="edit" class="edit section menu_section hidden">
+                <h1 class="title">Admin</h1>
+                <div class="planner_container container">
+                                <!-- Weekday Buttons -->
+                    <div class="weekday_buttons">
+                        <button class="day_btn active" data-day="monday">Mon</button>
+                        <button class="day_btn" data-day="tuesday">Tue</button>
+                        <button class="day_btn" data-day="wednesday">Wed</button>
+                        <button class="day_btn" data-day="thursday">Thu</button>
+                        <button class="day_btn" data-day="friday">Fri</button>
+                        <button class="day_btn" data-day="saturday">Sat</button>
+                        <button class="day_btn" data-day="sunday">Sun</button>
+                    </div>
+
+                    <!-- Task and Member Assignment Section -->
+                    <div class="task_container" id="taskContent">
+                        <div id="monday_tasks" class="tasks"> </div>
+                        <div id="tuesday_tasks" class="tasks hidden" > </div>
+                        <div id="wednesday_tasks" class="tasks hidden"> </div>
+                        <div id="thursday_tasks" class="tasks hidden"> </div>
+                        <div id="friday_tasks" class="tasks hidden"> </div>
+                        <div id="saturday_tasks" class="tasks hidden"> </div>
+                        <div id="sunday_tasks" class="tasks hidden"> </div>
+                        <span class="task_adder">
+                            <input type="text" id="taskInput" placeholder="Enter a task">
+                            <div class="custom-dropdown">
+                                <button class="dropdown-toggle">Select Members</button>
+                                <div id="select_member" class="dropdown-menu">
+                                    
+                                </div>
+                            </div>
+                        </span>
+                        <button id="assignTaskBtn" class="btn section_btn">Assign Task</button>
+                    </div>
+                </div>
+                <button id="finalize_btn" class="btn section_btn">Finalize</button>
+            </div>
+            
+            <div id="loggedin_error" class="error_container">
+            </div>
+        </div>
+        
+    </div>
+    <script src="./script.js"></script>
+    <script src="js/script2.js"></script>
+</body>
+</html>

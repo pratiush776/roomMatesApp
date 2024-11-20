@@ -1,0 +1,649 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+:root{
+    --main_bg:#b6dbed;    
+    --section_bg:#fbf4e8;    
+    --section_title:#41280E; 
+    --active_mint:#E6DAB6;
+    --btn_fields_bg:#8E6A4A;
+    --error:#e46756;
+    --titleSize:1.5em;
+    --fontSize:calc(0.5*var(var(--titleSize))) ;
+    --extra_one:#E6B89C;    
+    --extra_two:#4281A4;  
+    --extra_three:#F1E6D0;
+}
+:root[dark]{
+    --main_bg:#464a4d;    
+    --section_bg:#554533;    
+    --section_title:#949494; 
+    --active_mint:#8E6A4A;
+    --btn_fields_bg:#252525;
+    --error:#e46756;
+    --titleSize:1.5em;
+    --fontSize:calc(0.5*var(var(--titleSize))) ;
+    --extra_one:#E6B89C;    
+    --extra_two:#4281A4;  
+    --extra_three:#F1E6D0;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.body{
+    scroll-behavior: smooth;
+}
+img{
+    image-rendering: optimizeSpeed;
+}
+.main{
+    max-width: 100vw;
+    background-color: var(--main_bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lander{
+    min-height: 100vh;
+    min-width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.section{
+    padding: 5vh;
+    position:relative;
+    min-height: fit-content;
+    aspect-ratio: 2/3;
+    background-color: var(--section_bg);
+    color:var(--section_title);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    border-radius: 2%;
+    /* ######### make box shadow dynamic onscreen ########*/
+    box-shadow:-1vw 1vw 2vw;  
+    overflow: auto;
+}
+.title{
+    font-size: var(--titleSize);
+    margin: 0em auto;
+    transform: translate(0,-1em);
+}
+
+h2{
+    font-size: 0.8rem;
+	text-decoration: none;
+	margin: 1rem 0;
+    text-align: center;
+    font-weight: lighter;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+
+h2:hover{
+    color: var(--btn_fields_bg);
+}
+#login, #register{
+    height: auto;
+    width: auto;
+}
+.container {
+    height: 50%;
+    min-height: fit-content;
+    overflow: auto;
+}
+
+#form_login, #form_register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	flex-direction: column;
+	text-align: center;
+    margin:2rem;
+}
+input{
+	background-color: #eee;
+	border: none;
+	padding: 8% 11%;
+    margin:10%;
+	width: 100%;
+}
+.form_btn {
+    margin-top:1rem;
+	border-radius: 5vw;
+    border:none;
+	background-color: var(--btn_fields_bg);
+	color: white;
+	font-size: calc(0.4*var(--titleSize));
+	font-weight: bold;
+	padding: 1em 3em;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	transition: 0.2s ease-in;
+    cursor: pointer;
+    opacity: .8;
+    z-index: 999;
+}
+.form_btn:active {
+	transform: scale(0.95);
+}
+
+.form_btn:hover {
+    opacity: 1;
+}
+
+.arrow_img{
+    padding: 0.75rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    image-rendering: optimizeSpeed;
+}
+
+.front_arrow_img{
+    transform: translate(0.08rem,0);
+}
+.btn{
+    border-radius: 50%;
+    opacity: 0.9;
+    background-color: var(--btn_fields_bg);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn:hover{
+    opacity: 1;
+}
+.btn:active {
+	transform: scale(0.95);
+}
+.error_container{
+    min-width: fit-content;
+    position: relative;
+    bottom: -1.5rem;
+    color: var(--error);
+}
+
+.menu{
+    top: 2vh;
+    position: absolute;
+    left:2.5vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+.menu_toggle_btn{
+    opacity: 0.9;
+    background-color: rgb(171, 171, 171);
+    cursor: pointer;
+    margin: 1em;
+}
+.menu_btn{
+    opacity: 0.9;
+    background-color: rgb(171, 171, 171);
+    cursor: pointer;
+    margin: 1em;
+}
+.menu_img{
+    padding: 1em;
+    width: 3rem;
+}
+
+.not_visible{
+    visibility: hidden;
+}
+
+.logout_img{
+    transform: rotate(180deg) translate(0.1rem,0);
+    
+}
+
+/* ---------------------------------------today container------------------------ */
+.today,.schedule{
+    justify-content: space-evenly;
+    transition: transform 1s ease-in-out;
+    overflow: visible;
+}
+
+.schedule{
+    transform: translate(100vw,0);
+}
+
+.today_container,.schedule_container{
+    display: block;
+    min-width: 23vh;
+}
+
+.calendar_btn,.today_btn{
+    opacity: 0.9;
+    background-color: rgb(171, 171, 171);
+    cursor: pointer;
+    margin: 1em;
+    position: fixed;
+    top:45%;
+}
+.calendar_btn{
+    right: 22vw;
+}
+.today_btn{
+    left: 22vw;
+}
+.menu_img{
+    padding: 1em;
+    width: 3rem;
+}
+
+/* ---------------------------------------today container------------------------ */
+.hidden { display: none; }
+.active { color: red; }  
+.tasks { padding: 10px; border-top: 1px solid #ccc; }
+.task_detail { margin-bottom: 10px; }
+
+/* ------------------------account section--------------- */
+.account_container{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.account_container > .user_info{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    place-items: center;
+    height: 80%;
+}
+.user_info > input, .user_input_field{
+    margin: 1em;
+    padding: 0.9em 2em;
+    width: min-content;
+    place-self: center;
+    border-radius: 1.5em;
+}
+.section_btn{
+    place-self: flex-end;
+    cursor: pointer;
+    margin: 1em;
+    padding: 0.3em 1.5em;
+    border: none;
+    background-color: var(--btn_fields_bg);
+    opacity: 0.85;
+    border-radius: 1em;
+    color: white;
+    grid-column: 2;
+}
+
+.delete_btn{
+    position: absolute;
+    background-color: var(--error);
+    right: -.5em;
+    bottom: -.5em;
+    width: min-content;
+}
+
+.active{
+    background-color: var(--active_mint);
+    opacity: 1;
+    color: #41280E;
+}
+
+/* ------------------------Mates section--------------- */
+.no_group_container{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+.mates_container > h1 {
+    font-size: 0.75em;
+    text-align: center;
+    margin: 3em 0 1em 0;
+}
+
+.member_name{
+    text-align: center;
+    padding: 0.5em;
+    background-color: var(--extra_three);
+    border-radius: 2em;
+    margin:0.5em;
+}
+
+/* ------------------------Message section (pop up)--------------- */
+#message{
+    position: fixed;
+    min-width: fit-content;
+    min-height: fit-content;
+    padding: 2em;
+}
+
+#close_message_btn{
+    position: absolute;
+    top: 2em;
+    right: 2em;
+}
+/* ------------------------Theme toggle--------------- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.theme-switch-wrapper > h2{
+    font-size: 0.9em;
+    margin: 0 2em 0 0.5em;
+}
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 2.5rem; 
+    height: 1.42rem; 
+}
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 1.42rem; 
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.083rem; 
+    width: 1.083rem; 
+    left: 0.167rem; 
+    bottom: 0.167rem; 
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #666;
+}
+
+input:checked + .slider:before {
+    transform: translateX(1.083rem); 
+}
+
+.slider.round {
+    border-radius: 1.42rem;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.dark-mode {
+    --background-color: #333;
+    --text-color: white;
+}
+
+.light-mode {
+    --background-color: white;
+    --text-color: black;
+}
+
+/* ---------------------------------------for admin panel------------------------ */
+.planner_container{
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid var(--section_title);
+    border-radius: 1em;
+}
+.task_container{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    border-left: 1px solid;
+}
+.task_adder{
+    display: flex;
+    height: 2em;
+    min-width: fit-content;
+    gap: 0.5em;
+    margin:0.5em;
+}
+.task_adder>input{
+    padding: 0.5em;
+    margin: 0;
+}
+
+#assignTaskBtn{
+    width: fit-content;
+    align-self: center;
+    padding: 0.3em 0.8em;
+}
+.weekday_buttons{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+}
+
+.custom-dropdown {
+    position: relative;
+    width: 10em; /* Responsive width */
+}
+
+.dropdown-toggle {
+    width: 100%;
+    padding: 0.5em; /* Responsive padding */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+    height: 100%;
+    font-size: x-small;
+    overflow: hidden;
+}
+
+.dropdown-menu {
+    position: absolute;
+    width: 100%;
+    bottom: 100%; /* Opens upwards */
+    border: 1px solid #ccc;
+    display: none;
+    background-color: white;
+    z-index: 1000;
+    max-height: 6em; /* Responsive height based on content size */
+    overflow-y: auto; /* Allows for scrolling */
+}
+
+.dropdown-option {
+    padding: 0.5em;
+    font-size: 0.75em;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.dropdown-option:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-option > input[type="checkbox"] {
+    margin-right: 0.5em;
+}
+
+.day_btn {
+    cursor: pointer;
+    border-radius: 0.75em;
+    padding: 0.7em;
+    border: none;
+    background: var(--extra_one);
+    font-size: 0.8em;
+    margin: 0.75em;
+    transform: scale(0.8); /* Initial scale reduced */
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.day_btn:hover, .day_btn.active {
+    background-color: #e0e0e0; /* Darker on hover/active */
+    transform: scale(1); /* Scale to normal size on hover */
+}
+
+.delete_task_btn{
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border-radius: 100%;
+    border: none;
+    background: none;
+}
+.delete_task_btn > img{
+    opacity: 0.6;
+    aspect-ratio: 1/1;
+    height: 1.5em;
+}
+/* ---------------------------tasks-container / schedule container------------------------*/
+.tasks{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    width: 100%;
+    overflow: auto;
+    height: 28vh;
+}
+
+.task{
+    display: flex;
+    justify-content:space-between;
+    height: min-content;
+}
+.task_description{
+    width: 65%;
+    margin: 0.1em;
+    padding: 0.5em;
+    background-color: var(--extra_one);
+    border-radius: 1em;
+    text-align: center;
+}
+
+.assigned_member{
+    width: 35%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s ease-in-out;
+}
+
+.member_buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 80%;
+}
+
+.assigned_member > span, .member_buttons > button{
+    cursor: pointer;
+    margin: 0.2em;
+    padding: 0.45em;
+    width: 2em;
+    overflow: hidden;
+    border-radius: 1em;
+    transition: 0.75s ease-in-out;
+    background-color: var(--extra_one);
+}
+
+.member_buttons > button{
+    color: var(--section_title);
+    font-weight: bold;
+}
+
+.assigned_member > span:hover{
+    width: 100%; 
+}
+
+.member_buttons > button:hover{
+    width: 40%;
+    background-color: var(--btn_fields_bg);
+    color: var(--extra_three);
+}
+.member_buttons > button.active{
+    background-color: var(--btn_fields_bg);
+    color: var(--extra_three);
+}
+
+
+
+.hidden{
+    display: None;
+}
+
+/* schedule container tasks*/
+.home_schedule{
+    border:none;
+    display: flex;
+    justify-content: center;
+}
+
+.tasks_schedule{
+    padding: 1em;
+}
+
+.day_task_container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.day_schedule{
+    width: 6.75em;
+    overflow: hidden;
+    align-self: center;
+    margin-left:1em;
+    background-color: var(--active_mint);
+    padding: 0.3em;
+    border-radius: 1.75em;
+    transition: 0.5s ease-in-out;
+    cursor: default;
+    text-align: center;
+}
+
+/* .day_schedule:hover{
+    width: 60%;
+} */
+.day_tasks{
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5em;
+    margin-left: 2em;
+}
+
+.day_tasks > span{
+    padding: 0.45em;
+    text-align: center;
+    background-color: var(--extra_three);
+    border-radius: 2em;
+    margin: 0.2em;
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
