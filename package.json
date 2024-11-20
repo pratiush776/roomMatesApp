@@ -1,8 +1,17 @@
 {
+  "name": "roommatesapp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "npm install"
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express": "^4.19.2",
-    "nedb-promises": "^6.2.3",
-    "node": "^18.20.2"
+    "nedb-promises": "^6.2.3"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
