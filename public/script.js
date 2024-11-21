@@ -33,8 +33,10 @@ $("#login_to_register_btn").addEventListener("click", ()=>{
     reset_fields(inputFields.signin_dashboard_fields.login_section_fields);
     dashboard_swap(login_section,register_section);
 });
-logout_btn.addEventListener("click", ()=>{
-     showError($("#loggedin_error"),"");
+logout_btn.addEventListener("click",logout)
+
+function logout(){
+    showError($("#loggedin_error"),"");
      showError($("#signin_error"),"");
      dashboard_swap(loggedin_dashboard,signin_dashboard);
      $("#home_btn").click();
@@ -71,7 +73,7 @@ logout_btn.addEventListener("click", ()=>{
     remove_all_child($("#taskContent"))
 
     logged_out();
-});
+}
 // -------------------------Login-------------------------- //
 
 signin_btn.addEventListener("click",()=>{
@@ -302,14 +304,14 @@ function dashboard_swap(to_hide,to_visible){
 };
 
 function load_loggedin_dashboards(doc){
-
-    // account section 
-    load_account(doc);
-
     // groups section
+    load_account(doc);
     if (!doc.groupId) {
-        load_group_not_found()
+        $("#menu").classList.add("hidden");
+        $("#mates_container").classList.add("hidden");
+        load_group_not_found();
     } else {
+        // account section 
         if (doc.admin){
             add_edit_btn()
             load_admin_panel({members:doc.members,schedule:doc.schedule})
@@ -356,6 +358,7 @@ function load_schedule(schedule, members) {
         memberBtn.id = member+"Btn";
         memberBtn.classList.add("section_btn");
         memberBtn.classList.add("member_btn");
+        memberBtn.classList.add("above_menu");
         memberButtonsContainer.appendChild(memberBtn);
 
         // event listener is added in btns after DOM content loaded, scroll to the end
@@ -474,6 +477,19 @@ function load_group_not_found(){
     $("#no_group").appendChild(create_btn);  
     create_btn.addEventListener("click",create_group)
 
+    let no_group_logout_btn=document.createElement('button');
+    no_group_logout_btn.id="no_group_logout_btn";
+    no_group_logout_btn.innerText="Log Out";
+    no_group_logout_btn.classList.add('btn');
+    no_group_logout_btn.classList.add('section_btn');
+    
+    $("#no_group").appendChild(no_group_logout_btn);  
+    no_group_logout_btn.addEventListener("click", ()=>{
+        logout()
+        $("#menu").classList.remove("hidden");
+        $("#mates_container").classList.remove("hidden");
+    })
+
     open("groups");
     message_popup("Hello "+user_name+".\n\nPlease join a group or create one.\nThere is no fun in being alone in a group.\nYou can create a new group if you want.\n     OR\nEnter a group ID to join existing group.\n\nThank you!")
 }
@@ -590,7 +606,7 @@ function load_admin_panel(doc){
     function add_member(name){
         label=document.createElement('label');
         label.classList.add("dropdown-option")
-        label.innerHTML="<input type='checkbox' value="+name+" />"+ name+"</label>";
+        label.innerHTML="<input type='checkbox' value="+name+" /> <span>"+ name+"</span></label>";
         $("#select_member").appendChild(label)
     }
 }
@@ -672,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Opens the dropdown menu on mouse enter
     toggle.addEventListener('mouseenter', function() {
-        menu.style.display = 'block';
+        menu.style.display = 'flex';
     });
 
     // Closes the dropdown menu when the mouse leaves the dropdown area
@@ -684,6 +700,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if(!confirm("Are you sure you want to update the schedule?")) return;
         finalize(); //line 152
     })
-
-
+     // ----------------enabeling pointer events just for toggle menu btn----
+    $("#menu_toggle").style.pointerEvents='all';
+    
 });

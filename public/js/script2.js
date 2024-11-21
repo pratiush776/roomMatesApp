@@ -3,7 +3,18 @@ $("#menu_toggle").addEventListener("click", function() {
     const obj = document.getElementsByClassName("menu_btn");
     Array.from(obj).forEach(element => {
         element.classList.toggle("not_visible");
-    });
+        element.classList.toggle("menu_pointer_all");
+    })
+    // $("#today_btn").classList.toggle("below_menu");
+    
+    // document.querySelectorAll(".day_btn").forEach((button) => {
+    //     button.classList.toggle("below_menu");
+    // });
+    // document.querySelectorAll(".member_btn").forEach((button) => {
+    //     button.classList.toggle("below_menu");
+    //     button.classList.toggle("above_menu");
+    // });
+
 });
 
 $("#home_btn").addEventListener("click", () => {
@@ -158,6 +169,8 @@ function create_group(){
     })
     .then(response => response.json())  
     .then(doc => {
+        $("#menu").classList.remove("hidden");
+        $("#mates_container").classList.remove("hidden");
         remove_all_child($("#no_group"));
         load_group_found(doc);
         add_edit_btn();
@@ -203,6 +216,8 @@ function join_group(doc){
             localStorage.room_mates=JSON.stringify(roomMates);
             reset_fields(inputFields.signin_dashboard_fields.login_section_fields);
             dashboard_swap(signin_dashboard,loggedin_dashboard);
+            $("#menu").classList.remove("hidden");
+            $("#mates_container").classList.remove("hidden");
             load_loggedin_dashboards(doc);
             return; 
         } else if (doc.error){
@@ -233,7 +248,9 @@ function leave_group(doc){
         else{
             alert("Success");
             remove_all_child($("#mates_container"));
+            $("#menu").classList.add("hidden");
             load_group_not_found();
+            $("#mates_container").classList.add("hidden");
         } 
     })
     .catch(err=>showError('ERROR: '+err));
