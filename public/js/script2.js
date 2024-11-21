@@ -5,15 +5,6 @@ $("#menu_toggle").addEventListener("click", function() {
         element.classList.toggle("not_visible");
         element.classList.toggle("menu_pointer_all");
     })
-    // $("#today_btn").classList.toggle("below_menu");
-    
-    // document.querySelectorAll(".day_btn").forEach((button) => {
-    //     button.classList.toggle("below_menu");
-    // });
-    // document.querySelectorAll(".member_btn").forEach((button) => {
-    //     button.classList.toggle("below_menu");
-    //     button.classList.toggle("above_menu");
-    // });
 
 });
 
